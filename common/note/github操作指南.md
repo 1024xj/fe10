@@ -38,3 +38,39 @@ git pull origin master
 常用命令：
 git remote -v #查看本地的库的远程地址
 
+查询历史Vue
+history | grep vue
+
+##下载别人的git库
+
+电脑上新建文件夹，右键git bush 
+git clone https:github.com/ithuide/fe10.git .
+回车
+
+git fetch origin            #找到所有分支
+
+git checkout vueday2          #添加day2分支
+
+git checkout master        #添加master分支
+
+#检测新的东西并提交
+gst
+
+git status
+
+git add .
+
+git status
+
+git commit -am "day2 content"
+
+git push origin vueday2
+
+
+
+
+
+
+
+
+

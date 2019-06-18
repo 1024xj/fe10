@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <link href="https://cdn.bootcss.com/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="box">
+        {{a}}
+        <br>
+        {{b}}
+        <br>
+        {{obj.name}}
+    </div>
+</body>
+<script>
+    let vm=new Vue({
+        el:"#box",
+        data:{
+            stark:"shudong",
+            a:11111,
+            b:22222,
+            obj:{
+                name:'stark',
+                age:18
+            }
+        }
+    })
+    // vm.$watch('a',function(){
+    //     alert('a发生了变化');
+    //     this.b=this.a+100
+    // })
+    vm.$watch('obj',function(){
+        alert(this.obj.name);
+        // 不弹出因为是一个对象，需要深度监听
+    })
+    document.onclick=function(){
+        vm.obj.name="shudong";
+    }
+</script>
+</html>
