@@ -20,15 +20,21 @@ git init      #把仓库初始化
 git status    #查看本地有哪些文件需要提交 检查后如果不需要提交
 忽略文件： .gitignore
             在这个里面写的东西，将不会推送到远程
-            
+
 git add       #把本地的文件添加到仓库
 git commit -am "本次提交的注释"     #本次提交的注释
 git remote add origin https://github.com/itguide/fe10.git  #给本地的仓库加上远程地址
 
 git push origin master    #把提交后的代码推送到远程仓库，后面是分支名字，想推送哪个分支就写哪个分支名字
 
+git remote remove origin    #取消本地目录下关联的远程库
+
 
 ##场景:把代码仓库更新
 
 把仓库代码更新
 git pull origin master
+
+常用命令：
+git remote -v #查看本地的库的远程地址
+
