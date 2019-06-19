@@ -17,6 +17,12 @@
        <button @click="getGitUser(uid)">获取指定github账号信息并显示</button>
         <img  :src="user.avatar_url" alt="">姓名：{{user.name}}
         <input type="text" v-model="word" @keyup="jsonp">
+        <button @click="postGoods">post 请求</button>
+        <ul>
+            <li v-for="item in myData">
+                {{item}}
+            </li>
+        </ul>
     </div>
 
 </body>
@@ -46,6 +52,14 @@
                 }).then(function(res){
                     console.log(res);
                     this.myData=res.data.s;
+                })
+            },
+            postGoods:function(){
+                this.$http.post('https://easy-mock.com/mock/5d099f7f391add4e8c3a48d7/example/upload')
+                    
+                .then(res =>{
+                    console.log(res);
+                
                 })
             }
         }
