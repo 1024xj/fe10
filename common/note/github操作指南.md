@@ -66,7 +66,7 @@ git commit -am "day2 content"
 
 git push origin vueday2
 
-
+$npm --version #版本
 
 
 

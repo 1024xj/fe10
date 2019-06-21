@@ -1,6 +1,13 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
+    <a href="#/">首页</a>
+    <a href="#/Work">工作</a>
+    <router-link exact to="/">home主页</router-link>
+    <router-link to="/work" active-class="starkwang">我的工作</router-link>
+    <router-link to="/stark" tag="li">我的stark</router-link>
+    <router-link to="/user/2/profile" tag="li">我的profile</router-link>
+    <router-link to="/user/4/posts" tag="li">我的posts</router-link>
     <router-view/>
   </div>
 </template>
@@ -20,4 +27,10 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.router-link-active{
+        background-color:red
+    }
+  .starkwang{
+    background-color: #de3b8b;
+  }
 </style>
