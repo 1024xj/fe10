@@ -4,7 +4,10 @@
     <a href="#/">首页</a>
     <a href="#/Work">工作</a>
     <router-link exact to="/">home主页</router-link>
+    <router-link exact to="/Increment">加减法</router-link>
     <router-link to="/work" active-class="starkwang">我的工作</router-link>
+    <router-link to="/hero" active-class="starkwang">hero</router-link>
+    <router-link to="/daily" active-class="starkwang">知乎日报</router-link>
     <router-link to="/stark" tag="li">我的stark</router-link>
     <router-link to="/user/2/profile" tag="li">我的profile</router-link>
     <router-link to="/user/4/posts" tag="li">我的posts</router-link>
