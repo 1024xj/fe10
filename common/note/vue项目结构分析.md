@@ -64,6 +64,7 @@ readme.md 这个是项目的说明 在github上，会默认读取这个文件在
 
 
 #vue-build 文件说明
+
 vue webpack cli
 开发环境的server 是 express的服务
 
@@ -97,7 +98,6 @@ module:{
             formatter: require('eslint-friendly-formatter'),
             emitWarning: !config.dev.showEslintErrorsInOverlay
         } -->
-
 ---
 
 
@@ -152,7 +152,6 @@ module:{
         }
     ]
     })
-
 ---
 
 顺便说下 fis
@@ -162,30 +161,25 @@ nav
     nav.js
     nav.css
     nav.html
-
 在一个文件夹里面有以js css html为后缀的文件，不用手工引入
 fis自动识别引入
 ---
 
 #vue-cli项目分析
-
     入口文件
         在webpack.base.conf.js
 ---
-    module.exports = {
+module.exports = {
     context: path.resolve(__dirname, '../'),
     entry: {
         app: './src/main.js'
-    },
+}
 ---
-
 ---
     import Vue from 'vue'    //引入vue模块，相当于我们之前src="vue.js"
     import App from './App'   //引入组件模块
     import router from './router'   //引入路由模块
-
     Vue.config.productionTip = false
-
     /* eslint-disable no-new */
     new Vue({
         el: '#app',
@@ -209,9 +203,7 @@ App.vue
     # vue-router
 官方文档:https://router.vuejs.org/zh/
 
-
 用 Vue.js + Vue Router 创建单页应用，是非常简单的。使用 Vue.js ，我们已经可以通过组合组件来组成应用程序，当你要把 Vue Router 添加进来，我们需要做的是，将组件 (components) 映射到路由 (routes)，然后告诉 Vue Router 在哪里渲染它们。下面是个基本例子：
-
 
 ## hash 和 history模式
 默认hash模式：
@@ -240,7 +232,7 @@ HTML5 History 模式
   <div id="app">
     <router-link to="/">home主页</router-link>
     <router-link to="/work">我的工作</router-link>
-    <router-view/> //这个标签用来显示页面内容
+    <router-view/>  <!--这个标签用来显示页面内容 -->
   </div>
 </template>
 ---
@@ -331,7 +323,7 @@ http://locolhost:8080/#/about/blog
 这让你充分的使用嵌套组件而无须设置嵌套的路径。
 
 ---
-        {
+    {
           path: '/info', // 以/开头的嵌套路径会被当作根路径
           name: 'info',
           component: Info
@@ -349,3 +341,72 @@ http://locolhost:8080/#/about/blog
 你会发现，children 配置就是像 routes 配置一样的路由配置数组，所以呢，你可以嵌套多层路由。
 
 此时，基于上面的配置，当你访问 /about/info时，about 的出口是不会渲染任何东西，这是因为没有匹配到合适的子路由。
+
+
+###重定向
+
+###使用方式
+
+path:'*'
+这个*是匹配上面没有找到的路径，会到这里
+可以直接写：component:NotFound,
+
+redirect 这是一个函数，里面有参数to
+to打印出来是一个对象
+
+    {name: undefined, meta: {…}, path: "/tp", hash: "", query: {…}, …}
+    通过to.path可以获取当前用户访问的路径，来写一些逻辑跳转下面是使用详细方式
+
+---
+    {
+      path: '*',
+      // component: NotFound
+      redirect: (to) => {
+        console.log(to);
+        if (to.path === '/aaa') {
+          return '/work'
+        } else if (to.path === '/bbb') {
+          return '/info'
+        } else {
+          return '/'
+        }
+    }
+---
+
+##路由参数
+
+在路由里面的path：'/user/:stark' 这个冒号后面跟的字符串相当于key
+在组件里面使用 this.$route.params.stark 来获取这个value的值
+访问方式：
+ http://locolhost:8080/#/user/wang
+
+wang 就是console.log(this.$route.params.stark)值
+
+在后面跟？号
+可以 写wang 或者不写 后面的参数
+如果不跟 ？号，必须写这个参数
+
+
+###如果相传多个参数
+---
+在路由里面添加多个key
+path:'/user/:stark?/:name?
+访问方式
+http://locolhost:8080/#/user/wang/stark
+打印结果
+---
+
+{stark:"wang",name:"shudong"}
+---
+    {
+      path: '/user/:stark?/name',
+      name: 'user',
+      component: User
+    },
+---
+
+###生产环境：
+    真正的产品上线的环境
+###开发环境：
+    本地开发的环境
+    
